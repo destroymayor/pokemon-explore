@@ -8,13 +8,18 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "clsx": "^1.2.1",
+    "framer-motion": "^7.1.0",
     "next": "^12.2.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^1.3.0",
+    "zustand": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.7.1",
     "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.21.0",
