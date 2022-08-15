@@ -11,7 +11,7 @@ export default function PokemonType() {
   const handleSelect = (type: number) => setSearchType(type);
 
   return (
-    <ul className="flex flex-col">
+    <ul className="flex flex-row gap-2 flex-wrap lg:flex-col">
       {pokemonType?.map((item) => (
         <li
           className={clsx(

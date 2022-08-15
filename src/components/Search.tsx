@@ -9,7 +9,7 @@ export default function Search() {
   return (
     <div>
       <input
-        className="p-2 border rounded-md focus:outline-none"
+        className="p-2 border rounded-md w-full focus:outline-none"
         placeholder="Search ID or Name"
         value={searchValue}
         onChange={handleChange}

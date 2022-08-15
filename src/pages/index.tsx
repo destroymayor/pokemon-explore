@@ -13,8 +13,8 @@ export default function Home() {
         <title>Pokemon Explore</title>
       </Head>
       <div className="flex min-h-screen items-center flex-col">
-        <header className="flex flex-col bg-zinc-200 py-20 w-full">
-          <div className="max-w-6xl flex items-center justify-between mx-auto w-full">
+        <header className="flex flex-col bg-zinc-200 px-6 lg:px-4 py-20 w-full">
+          <div className="max-w-5xl flex items-center justify-between mx-auto w-full">
             <h1 className="text-3xl">Pokemon Explore</h1>
             <Link href={'https://github.com/destroymayor/pokemon-explore'}>
               <span className="hover:bg-zinc-300 p-2 rounded-full cursor-pointer">
@@ -31,12 +31,12 @@ export default function Home() {
             </Link>
           </div>
         </header>
-        <main className="flex w-full gap-10 max-w-6xl">
-          <div className="flex gap-2 flex-col pr-10 border-r pt-10">
+        <main className="flex lg:flex-row flex-col p-6 lg:px-4 lg:py-0 w-full gap-10 max-w-5xl">
+          <div className="flex gap-2 flex-col lg:pr-10 lg:border-r lg:pt-10">
             <Search />
             <PokemonType />
           </div>
-          <div className="flex-1 pt-10">
+          <div className="flex-1 lg:pt-10">
             <Pokemons />
             <PokemonInfo />
           </div>

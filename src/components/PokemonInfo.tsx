@@ -16,17 +16,18 @@ export default function PokemonInfo() {
 
   if (!open) return null;
 
+  const name = data?.name && `${data?.name[0].toLocaleUpperCase()}${data?.name.substring(1)}`;
   const height = data?.height && `${data?.height / 10} m`;
   const weight = data?.weight && `${data?.weight / 10} kg`;
 
   return (
     <InPortal>
       <div className="fixed inset-0 bg-zinc-900/80" />
-      <div className="flex fixed inset-0 mt-[10vh] mx-auto max-w-2xl h-[500px] bg-zinc-50 rounded-md shadow-xl">
-        <div className="px-6 relative min-w-[150px] rounded-l-md grid place-items-center bg-zinc-100">
+      <div className="flex flex-col mx-10 sm:flex-row fixed inset-0 mt-[10vh] sm:mx-auto max-w-2xl h-[600px] sm:h-[450px] bg-zinc-50 rounded-md shadow-xl">
+        <div className="px-6 relative min-h-[150px] sm:min-w-[180px] rounded-md sm:rounded-r-none grid place-items-center bg-zinc-100">
           {!isLoading && (
             <Image
-              className="absolute -right-8"
+              className="-bottom-8 sm:bottom-auto absolute sm:-right-8"
               alt={data?.name}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data?.id}.svg`}
               width={150}
@@ -35,11 +36,11 @@ export default function PokemonInfo() {
           )}
         </div>
 
-        <div className="flex flex-col gap-4 flex-[3] p-6 pl-20">
+        <div className="flex flex-col justify-center gap-4 flex-[3] p-6 sm:pl-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl font-semibold">{data?.name}</h1>
-              <span className="text-zinc-500">#{data?.id}</span>
+              <h1 className="text-2xl font-semibold">{name}</h1>
+              <span className="text-sm text-zinc-500">#{data?.id}</span>
             </div>
 
             <button
