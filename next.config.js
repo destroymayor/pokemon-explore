@@ -13,6 +13,7 @@ module.exports = {
     browsersListForSwc: true,
     images: {
       allowFutureImage: true,
+      unoptimized: true,
     },
   },
 };
