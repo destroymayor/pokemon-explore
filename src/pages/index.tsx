@@ -1,10 +1,13 @@
+import { Suspense } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 import Search from '@/components/Search';
-import Pokemons from '@/components/Pokemons';
 import PokemonType from '@/components/PokemonType';
-import PokemonInfo from '@/components/PokemonInfo';
+
+const Pokemons = dynamic(() => import('@/components/Pokemons'), { ssr: false });
+const PokemonInfo = dynamic(() => import('@/components/PokemonInfo'), { ssr: false });
 
 export default function Home() {
   return (
@@ -37,7 +40,9 @@ export default function Home() {
             <PokemonType />
           </div>
           <div className="flex-1 lg:pt-10">
-            <Pokemons />
+            <Suspense fallback={<div>loading...</div>}>
+              <Pokemons />
+            </Suspense>
             <PokemonInfo />
           </div>
         </main>

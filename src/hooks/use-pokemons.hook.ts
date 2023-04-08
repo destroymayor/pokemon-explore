@@ -24,6 +24,7 @@ export default function usePokemonByType() {
 
   const { data, error } = useSWR<IPokemonType>(url, fetcher, {
     revalidateOnFocus: false,
+    suspense: true,
   });
 
   const pokemons = data?.pokemon?.map(({ pokemon }) => {

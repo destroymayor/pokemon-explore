@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import usePokemonInfo from '@/hooks/use-pokemon-info.hook';
 import usePokemonState from '@/hooks/use-pokemon-state.hook';
@@ -28,7 +28,7 @@ export default function PokemonInfo() {
           {!isLoading && (
             <Image
               className="-bottom-8 sm:bottom-auto absolute sm:-right-8"
-              alt={data?.name}
+              alt={data?.name ?? 'pokemon'}
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data?.id}.svg`}
               width={150}
               height={150}
