@@ -4,41 +4,30 @@ import fetcher from '@/lib/fetcher';
 
 const POKE_API = `https://pokeapi.co/api/v2/pokemon`;
 
-interface Props {
-  open: boolean;
-  id?: number;
-}
-
-type Types = {
-  type: {
-    name: string;
-  };
-};
-
-type Abilities = {
-  ability: {
-    name: string;
-  };
-};
-
-type Stats = {
-  stat: {
-    name: string;
-  };
-  base_stat: number;
-};
-
 interface IPokemonInfo {
   name: string;
   id: number;
-  types: Types[];
+  types: Array<{
+    type: {
+      name: string;
+    };
+  }>;
   height: number;
   weight: number;
-  abilities: Abilities[];
-  stats: Stats[];
+  abilities: Array<{
+    ability: {
+      name: string;
+    };
+  }>;
+  stats: Array<{
+    stat: {
+      name: string;
+    };
+    base_stat: number;
+  }>;
 }
 
-export default function usePokemonInfo(props: Props) {
+export default function usePokemonInfo(props: { open: boolean; id?: number }) {
   const { open, id = 1 } = props;
   const url = `${POKE_API}/${id}`;
 

@@ -4,18 +4,16 @@ import usePokemonState from '@/hooks/use-pokemon-state.hook';
 
 import fetcher from '@/lib/fetcher';
 
-interface IPokemonTypeItem {
-  pokemon: {
-    name: string;
-    id: number;
-    url: string;
-  };
-}
-
-interface IPokemonType {
-  pokemon: IPokemonTypeItem[];
-}
 const POKE_TYPE_API = `https://pokeapi.co/api/v2/type`;
+interface IPokemonType {
+  pokemon: Array<{
+    pokemon: {
+      name: string;
+      id: number;
+      url: string;
+    };
+  }>;
+}
 
 export default function usePokemonByType() {
   const pokemonState = usePokemonState();
@@ -24,7 +22,6 @@ export default function usePokemonByType() {
 
   const { data, error } = useSWR<IPokemonType>(url, fetcher, {
     revalidateOnFocus: false,
-    suspense: true,
   });
 
   const pokemons = data?.pokemon?.map(({ pokemon }) => {

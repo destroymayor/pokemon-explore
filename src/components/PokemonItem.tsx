@@ -1,14 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import usePokemonState from '@/hooks/use-pokemon-state.hook';
 
 export default function PokemonItem(props: { name: string; id: number }) {
   const { name, id } = props;
 
-  const pokemonState = usePokemonState();
+  const { setDialogOpen, setDialogSelectedId } = usePokemonState((state) => ({
+    setDialogOpen: state.setDialogOpen,
+    setDialogSelectedId: state.setDialogSelectedId,
+  }));
 
   const handleSelectItem = (id: number) => {
-    pokemonState.setDialogOpen(true);
-    pokemonState.setDialogSelectedId(id);
+    setDialogOpen(true);
+    setDialogSelectedId(id);
   };
 
   return (

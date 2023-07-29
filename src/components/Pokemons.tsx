@@ -1,10 +1,16 @@
+'use client';
+
 import { Suspense } from 'react';
 import usePokemons from '@/hooks/use-pokemons.hook';
 
 import PokemonItem from './PokemonItem';
 
 export default function Pokemons() {
-  const { pokemonTotalCount, pokemons } = usePokemons();
+  const { isLoading, pokemonTotalCount, pokemons } = usePokemons();
+
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className="flex flex-col gap-4 pb-10">

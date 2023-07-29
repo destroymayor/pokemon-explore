@@ -1,8 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 
 import usePokemonInfo from '@/hooks/use-pokemon-info.hook';
 import usePokemonState from '@/hooks/use-pokemon-state.hook';
-
 import useScrollDisabler from '@/hooks/use-scroll-disabler.hook';
 
 import InPortal from '@/components/InPortal';
@@ -14,7 +15,9 @@ export default function PokemonInfo() {
 
   useScrollDisabler(open);
 
-  if (!open) return null;
+  if (!open) {
+    return null;
+  }
 
   const name = data?.name && `${data?.name[0].toLocaleUpperCase()}${data?.name.substring(1)}`;
   const height = data?.height && `${data?.height / 10} m`;

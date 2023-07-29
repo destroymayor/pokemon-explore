@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface IState {
   searchValue: string | undefined;
@@ -14,7 +14,7 @@ interface IState {
 }
 
 const usePokemonState = create<IState>((set) => ({
-  searchValue: undefined,
+  searchValue: '',
   searchType: 1,
   dialog: {
     id: 0,

@@ -1,18 +1,18 @@
+'use client';
+
 import usePokemonState from '@/hooks/use-pokemon-state.hook';
-
 import pokemonType from '@/constants/pokemon-type';
-
 import clsx from 'clsx';
 
 export default function PokemonType() {
-  const searchType = usePokemonState((state) => state.searchType);
-  const setSearchType = usePokemonState((state) => state.setSearchType);
-
-  const handleSelect = (type: number) => setSearchType(type);
+  const { searchType, setSearchType } = usePokemonState((state) => ({
+    searchType: state.searchType,
+    setSearchType: state.setSearchType,
+  }));
 
   return (
     <ul className="flex flex-row gap-2 flex-wrap lg:flex-col">
-      {pokemonType?.map((item) => (
+      {pokemonType.map((item) => (
         <li
           className={clsx(
             'rounded-md cursor-pointer p-2 transition duration-300 ease-in-out',
@@ -21,7 +21,7 @@ export default function PokemonType() {
               : 'text-zinc-500  hover:text-zinc-700'
           )}
           key={item.name}
-          onClick={() => handleSelect(item.type)}
+          onClick={() => setSearchType(item.type)}
         >
           {item.name}
         </li>
