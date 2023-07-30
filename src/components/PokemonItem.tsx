@@ -18,7 +18,7 @@ export default function PokemonItem(props: { name: string; id: number }) {
 
   return (
     <li
-      className="flex flex-col gap-4 shadow-xl rounded-lg p-6 transition duration-200 ease-in-out hover:scale-[1.05] cursor-pointer"
+      className="flex flex-col gap-4 shadow-xl border rounded-lg p-6 transition duration-200 ease-in-out hover:scale-[1.05] cursor-pointer"
       onClick={() => handleSelectItem(id)}
     >
       <div className="self-center rounded-full p-4">
@@ -37,5 +37,18 @@ export default function PokemonItem(props: { name: string; id: number }) {
         <span className="text-lg font-semibold">{name}</span>
       </div>
     </li>
+  );
+}
+
+export function PokemonItemPlaceholder() {
+  return (
+    <div className="flex flex-col gap-4 bg-slate-50 rounded-lg p-6 animate-pulse h-[246px]">
+      <div className="self-center w-[132px] mb-2 h-[132px] bg-slate-200 rounded-full" />
+
+      <div className="flex flex-col gap-2 items-start">
+        <div className="bg-slate-200 w-1/2 h-4 rounded"></div>
+        <div className="bg-slate-200 w-3/4 h-4 rounded"></div>
+      </div>
+    </div>
   );
 }

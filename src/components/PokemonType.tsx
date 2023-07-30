@@ -1,8 +1,8 @@
 'use client';
 
+import clsx from 'clsx';
 import usePokemonState from '@/hooks/use-pokemon-state.hook';
 import pokemonType from '@/constants/pokemon-type';
-import clsx from 'clsx';
 
 export default function PokemonType() {
   const { searchType, setSearchType } = usePokemonState((state) => ({

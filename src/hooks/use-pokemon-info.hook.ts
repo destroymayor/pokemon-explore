@@ -31,7 +31,7 @@ export default function usePokemonInfo(props: { open: boolean; id?: number }) {
   const { open, id = 1 } = props;
   const url = `${POKE_API}/${id}`;
 
-  const { data, error } = useSWR<IPokemonInfo>(open ? url : null, fetcher);
+  const { data, error, isLoading } = useSWR<IPokemonInfo>(open ? url : null, fetcher);
 
-  return { data, isLoading: !error && !data, error };
+  return { data, isLoading, error };
 }

@@ -16,11 +16,11 @@ interface IPokemonType {
 }
 
 export default function usePokemonByType() {
-  const pokemonState = usePokemonState();
+  const { searchType } = usePokemonState((state) => ({ searchType: state.searchType }));
 
-  const url = `${POKE_TYPE_API}/${pokemonState.searchType}`;
+  const url = `${POKE_TYPE_API}/${searchType}`;
 
-  const { data, error } = useSWR<IPokemonType>(url, fetcher, {
+  const { data, error, isLoading } = useSWR<IPokemonType>(url, fetcher, {
     revalidateOnFocus: false,
   });
 
@@ -36,7 +36,6 @@ export default function usePokemonByType() {
 
   const pokemonTotalCount = pokemons?.length;
   const isError = !!error;
-  const isLoading = !data?.pokemon && !isError;
   const isEmpty = pokemons?.length === 0;
 
   return {

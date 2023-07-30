@@ -9,9 +9,12 @@ import useScrollDisabler from '@/hooks/use-scroll-disabler.hook';
 import InPortal from '@/components/InPortal';
 
 export default function PokemonInfo() {
-  const pokemonState = usePokemonState();
-  const { open, id } = pokemonState.dialog;
-  const { data, isLoading } = usePokemonInfo({ open, id });
+  const { dialog, setDialogOpen } = usePokemonState((state) => ({
+    dialog: state.dialog,
+    setDialogOpen: state.setDialogOpen,
+  }));
+  const { open, id } = dialog;
+  const { data } = usePokemonInfo({ open, id });
 
   useScrollDisabler(open);
 
@@ -28,15 +31,13 @@ export default function PokemonInfo() {
       <div className="fixed inset-0 bg-zinc-900/80" />
       <div className="flex flex-col mx-10 sm:flex-row fixed inset-0 mt-[10vh] sm:mx-auto max-w-2xl h-[600px] sm:h-[450px] bg-zinc-50 rounded-md shadow-xl">
         <div className="px-6 relative min-h-[150px] sm:min-w-[180px] rounded-md sm:rounded-r-none grid place-items-center bg-zinc-100">
-          {!isLoading && (
-            <Image
-              className="-bottom-8 sm:bottom-auto absolute sm:-right-8"
-              alt={data?.name ?? 'pokemon'}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data?.id}.svg`}
-              width={150}
-              height={150}
-            />
-          )}
+          <Image
+            className="-bottom-8 sm:bottom-auto absolute sm:-right-8"
+            alt={data?.name ?? 'pokemon'}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data?.id}.svg`}
+            width={150}
+            height={150}
+          />
         </div>
 
         <div className="flex flex-col justify-center gap-4 flex-[3] p-6 sm:pl-20">
@@ -48,7 +49,7 @@ export default function PokemonInfo() {
 
             <button
               className="hover:bg-zinc-200 p-1 rounded-full"
-              onClick={() => pokemonState.setDialogOpen(!pokemonState.dialog.open)}
+              onClick={() => setDialogOpen(!dialog.open)}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
