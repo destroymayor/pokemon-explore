@@ -29,6 +29,7 @@ export default function PokemonItem(props: { name: string; id: number }) {
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
           width={100}
           height={100}
+          unoptimized
         />
       </div>
 

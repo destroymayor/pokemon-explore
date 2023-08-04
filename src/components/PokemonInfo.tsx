@@ -37,6 +37,7 @@ export default function PokemonInfo() {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data?.id}.svg`}
             width={150}
             height={150}
+            unoptimized
           />
         </div>
 
